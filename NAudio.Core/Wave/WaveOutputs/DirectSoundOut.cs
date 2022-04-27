@@ -48,7 +48,7 @@ namespace NAudio.Wave
         {
             get {
                 devices = new List<DirectSoundDeviceInfo>();
-                DirectSoundEnumerate(new DSEnumCallback(EnumCallback), IntPtr.Zero);
+                //DirectSoundEnumerate(new DSEnumCallback(EnumCallback), IntPtr.Zero);
                 return devices;
             }
         }
@@ -240,7 +240,7 @@ namespace NAudio.Wave
             lock (this.m_LockObject)
             {
                 Debug.Assert(directSound == null);
-                DirectSoundCreate(ref device, out directSound, IntPtr.Zero);
+                //DirectSoundCreate(ref device, out directSound, IntPtr.Zero);
 
                 if (directSound != null)
                 {
@@ -857,14 +857,14 @@ namespace NAudio.Wave
             void SetNotificationPositions(UInt32 dwPositionNotifies, [In, MarshalAs(UnmanagedType.LPArray)] DirectSoundBufferPositionNotify[] pcPositionNotifies);
         }
 
-        /// <summary>
-        /// Instanciate DirectSound from the DLL
-        /// </summary>
-        /// <param name="GUID">The GUID.</param>
-        /// <param name="directSound">The direct sound.</param>
-        /// <param name="pUnkOuter">The p unk outer.</param>
-        [DllImport("dsound.dll", EntryPoint = "DirectSoundCreate", SetLastError = true, CharSet = CharSet.Unicode, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
-        static extern void DirectSoundCreate(ref Guid GUID, [Out, MarshalAs(UnmanagedType.Interface)] out IDirectSound directSound, IntPtr pUnkOuter);
+        ///// <summary>
+        ///// Instanciate DirectSound from the DLL
+        ///// </summary>
+        ///// <param name="GUID">The GUID.</param>
+        ///// <param name="directSound">The direct sound.</param>
+        ///// <param name="pUnkOuter">The p unk outer.</param>
+        //[DllImport("dsound.dll", EntryPoint = "DirectSoundCreate", SetLastError = true, CharSet = CharSet.Unicode, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
+        //static extern void DirectSoundCreate(ref Guid GUID, [Out, MarshalAs(UnmanagedType.Interface)] out IDirectSound directSound, IntPtr pUnkOuter);
 
 
         /// <summary>
@@ -898,13 +898,13 @@ namespace NAudio.Wave
         /// <returns>Returns TRUE to continue enumerating drivers, or FALSE to stop.</returns>
         delegate bool DSEnumCallback(IntPtr lpGuid, IntPtr lpcstrDescription, IntPtr lpcstrModule, IntPtr lpContext);
 
-        /// <summary>
-        /// The DirectSoundEnumerate function enumerates the DirectSound drivers installed in the system.
-        /// </summary>
-        /// <param name="lpDSEnumCallback">callback function</param>
-        /// <param name="lpContext">User context</param>
-        [DllImport("dsound.dll", EntryPoint = "DirectSoundEnumerateA", SetLastError = true, CharSet = CharSet.Unicode, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
-        static extern void DirectSoundEnumerate(DSEnumCallback lpDSEnumCallback, IntPtr lpContext);
+        ///// <summary>
+        ///// The DirectSoundEnumerate function enumerates the DirectSound drivers installed in the system.
+        ///// </summary>
+        ///// <param name="lpDSEnumCallback">callback function</param>
+        ///// <param name="lpContext">User context</param>
+        //[DllImport("dsound.dll", EntryPoint = "DirectSoundEnumerateA", SetLastError = true, CharSet = CharSet.Unicode, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
+        //static extern void DirectSoundEnumerate(DSEnumCallback lpDSEnumCallback, IntPtr lpContext);
 
         /// <summary>
         /// Gets the HANDLE of the desktop window.
